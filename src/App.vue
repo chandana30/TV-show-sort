@@ -1,11 +1,19 @@
  <template>
   <div class="main">
-  <Home/>
+    <Suspense>
+      <template #default>
+        <Home />
+      </template>
+      <template #fallback>
+        <Shows/>
+      </template>
+    </Suspense>
   </div>
 </template>
 
 <script>
 import Home from './components/home/Home.vue';
+import Shows from "./components/home/Shows.vue";
 export default {
   name: "App",
   data() {
@@ -14,7 +22,8 @@ export default {
     };
   },
   components:{
-    Home
+    Home,
+    Shows
   }
 };
 </script>
@@ -25,7 +34,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  color: #2c3e50;
+  color: blue;
   margin-top: 60px;
 }
 </style>

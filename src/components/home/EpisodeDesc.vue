@@ -2,7 +2,7 @@
   <div class="container--episode">
     <div class="section" v-for="(episode, index) in episodeLists" :key="index">
       <div class="card" >
-        <img :src="episodeImage(episode)" alt="images" style="width: 100%" />
+        <v-lazy-image :src="episodeImage(episode)" alt="images" style="width: 100%" />
         <p class="info" style="font-weight:700">Episode {{ episode.number }}</p>
         <p class="info" style="font-weight:500;color:#372768">{{ episode.name }}</p>
         <div class="desc info" v-html="episode.summary"></div>
@@ -16,11 +16,15 @@
 </template>
 
 <script>
+import VLazyImage from "v-lazy-image";
 export default {
 
 
   data() {
     return {};
+  },
+  components: {
+    VLazyImage
   },
   props: {
     episodeLists: {
@@ -41,13 +45,15 @@ export default {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
+
 .section {
   margin-bottom: 40px;
 }
 .card {
   height: 275px;
   width: 275px;
-  border: 2px solid black;
+  border: 2px solid goldenrod;
+  color: brown;
   text-align: center;
 }
 .info {
